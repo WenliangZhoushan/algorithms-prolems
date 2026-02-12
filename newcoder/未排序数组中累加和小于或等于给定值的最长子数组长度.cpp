@@ -33,7 +33,7 @@ int solve() {
         int l = 0, r = i - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
-            if (st[m] <= x) {
+            if (st[m] < x) {
                 l = m + 1;
             } else {
                 r = m - 1;
