@@ -24,6 +24,11 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
 #define debug3(x, y, z) cerr << #x << " = " << x << ", " << #y << " = " << y << ", " << #z << " = " << z << endl
 #define debugline() cerr << "--------------------" << endl
 
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+}
+
 // ===== 使用示例 =====
 /*
 int main() {
