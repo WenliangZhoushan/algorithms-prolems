@@ -24,17 +24,17 @@ ll n;
 
 void solve() {
     cin >> n;
-    ll res = 1;
-    ll temp = n;
-    for (ll i = 2; i * i <= temp; ++i) {
-        if (temp % i == 0) {
-            res *= i;
-            while (temp % i == 0) temp /= i;
+    ll ans = 1;
+    for (int i = 2; i * i <= n; ++i) {
+        if (n % i == 0) {
+            ans *= i;
+            while (n % i == 0) {
+                n /= i;
+            }
         }
     }
-    if (temp > 1) res *= temp;
-
-    cout << res << endl;
+    if (n > 1) ans *= n;
+    cout << ans << endl;
 }
 
 int main() {
