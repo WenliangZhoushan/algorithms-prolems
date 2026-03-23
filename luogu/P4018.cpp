@@ -22,16 +22,16 @@ const int NEG_INF = 0xcfcfcfcf;
 int T, n;
 
 void solve() {
-    cin >> n;
-    cout << (n % 6 == 0 ? "Roy wins!" : "October wins!") << endl;
+  cin >> n;
+  cout << (n % 6 == 0 ? "Roy wins!" : "October wins!") << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> T;
-    while (T--) {
-        solve();
-    }
+  cin >> T;
+  while (T--) {
+    solve();
+  }
 }

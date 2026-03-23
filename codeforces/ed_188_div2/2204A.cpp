@@ -23,21 +23,21 @@ int t, n;
 string s;
 
 void solve() {
-    cin >> n >> s;
-    int ans = 1;
-    for (char& c: s) {
-        if (c == 'L') break;
-        ++ans;
-    }
-    cout << ans << endl;
+  cin >> n >> s;
+  int ans = 1;
+  for (char& c: s) {
+    if (c == 'L') break;
+    ++ans;
+  }
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

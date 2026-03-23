@@ -26,47 +26,47 @@ int nums[4];
 ll f[5][MAXM + 1];
 
 void solve() {
-    for (int i = 0; i < 4; ++i) cin >> nums[i];
-    cin >> s;
+  for (int i = 0; i < 4; ++i) cin >> nums[i];
+  cin >> s;
 
-    ll ans = 0;
-    for (int mask = 1; mask < (1 << 4); ++mask) {
-        int rem = s, cnt = 0;
-        for (int i = 0; i < 4; ++i) {
-            if ((mask >> i) & 1) {
-                rem -= (nums[i] + 1) * coins[i];
-                ++cnt;
-            }
-        }
-        if (rem < 0) {
-            continue;
-        } else {
-            ans += (cnt % 2) ? f[4][rem] : -f[4][rem];
-        }
+  ll ans = 0;
+  for (int mask = 1; mask < (1 << 4); ++mask) {
+    int rem = s, cnt = 0;
+    for (int i = 0; i < 4; ++i) {
+      if ((mask >> i) & 1) {
+        rem -= (nums[i] + 1) * coins[i];
+        ++cnt;
+      }
     }
+    if (rem < 0) {
+      continue;
+    } else {
+      ans += (cnt % 2) ? f[4][rem] : -f[4][rem];
+    }
+  }
 
-    cout << f[4][s] - ans << endl;
+  cout << f[4][s] - ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    for (int i = 0; i < 4; ++i) cin >> coins[i];
-    f[0][0] = 1;
-    for (int i = 0; i < 4; ++i) {
-        int c = coins[i];
-        for (int j = 0; j <= MAXM; ++j) {
-            if (j < c) {
-                f[i + 1][j] = f[i][j];
-            } else {
-                f[i + 1][j] = f[i][j] + f[i + 1][j - c];
-            }
-        }
+  for (int i = 0; i < 4; ++i) cin >> coins[i];
+  f[0][0] = 1;
+  for (int i = 0; i < 4; ++i) {
+    int c = coins[i];
+    for (int j = 0; j <= MAXM; ++j) {
+      if (j < c) {
+        f[i + 1][j] = f[i][j];
+      } else {
+        f[i + 1][j] = f[i][j] + f[i + 1][j - c];
+      }
     }
+  }
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

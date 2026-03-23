@@ -24,48 +24,48 @@ int t, n;
 int edges[MAXN];
 
 void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; ++i) {
-        cin >> edges[i];
-    }
-    if (edges[1] == 1) {
-        cout << n + 1 << " ";
-        for (int i = 1; i <= n; ++i) cout << i << " ";
-        cout << endl;
-        return;
-    }
-    if (edges[n] == 0) {
-        for (int i = 1; i <= n; ++i) cout << i << " ";
-        cout << n + 1 << " ";
-        cout << endl;
-        return;
-    }
-    int j = -1;
-    for (int i = 1; i <= n - 1; ++i) {
-        if (edges[i] == 0 && edges[i + 1] == 1) {
-            j = i;
-            break;
-        }
-    }
-    if (j == -1) {
-        cout << -1 << endl;
-        return;
-    }
-    for (int i = 1; i <= n; ++i) {
-        cout << i << " ";
-        if (i == j) {
-            cout << n + 1 << " ";
-        }
-    }
+  cin >> n;
+  for (int i = 1; i <= n; ++i) {
+    cin >> edges[i];
+  }
+  if (edges[1] == 1) {
+    cout << n + 1 << " ";
+    for (int i = 1; i <= n; ++i) cout << i << " ";
     cout << endl;
+    return;
+  }
+  if (edges[n] == 0) {
+    for (int i = 1; i <= n; ++i) cout << i << " ";
+    cout << n + 1 << " ";
+    cout << endl;
+    return;
+  }
+  int j = -1;
+  for (int i = 1; i <= n - 1; ++i) {
+    if (edges[i] == 0 && edges[i + 1] == 1) {
+      j = i;
+      break;
+    }
+  }
+  if (j == -1) {
+    cout << -1 << endl;
+    return;
+  }
+  for (int i = 1; i <= n; ++i) {
+    cout << i << " ";
+    if (i == j) {
+      cout << n + 1 << " ";
+    }
+  }
+  cout << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

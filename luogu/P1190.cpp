@@ -26,29 +26,29 @@ int nums[MAXN];
 int cnt[MAXM];
 
 void solve() {
-    cin >> n >> m;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
+  cin >> n >> m;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+  }
+  if (m >= n) {
+    cout << *max_element(nums + 1, nums + n + 1) << endl;
+    return;
+  }
+  for (int i = 1; i <= n; ++i) {
+    int j = 0;
+    for (int k = 0; k < m; ++k) {
+      j = cnt[k] < cnt[j] ? k : j;
     }
-    if (m >= n) {
-        cout << *max_element(nums + 1, nums + n + 1) << endl;
-        return;
-    }
-    for (int i = 1; i <= n; ++i) {
-        int j = 0;
-        for (int k = 0; k < m; ++k) {
-            j = cnt[k] < cnt[j] ? k : j;
-        }
-        cnt[j] += nums[i];
-    }
-    // debug_arr(cnt, m);
-    cout << *max_element(cnt, cnt + m) << endl;
+    cnt[j] += nums[i];
+  }
+  // debug_arr(cnt, m);
+  cout << *max_element(cnt, cnt + m) << endl;
 
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

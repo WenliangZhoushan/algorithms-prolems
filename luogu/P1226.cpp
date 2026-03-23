@@ -22,21 +22,21 @@ const int NEG_INF = 0xcfcfcfcf;
 ll a, b, p;
 
 void solve() {
-    // a ^ b % p
-    cin >> a >> b >> p;
-    ll ans = 1, cnt = a;
-    for (int i = 0; i <= 30; ++i) {
-        if ((1 << i) & b) {
-            ans = (ans * cnt) % p;
-        }
-        cnt = (cnt * cnt) % p;
+  // a ^ b % p
+  cin >> a >> b >> p;
+  ll ans = 1, cnt = a;
+  for (int i = 0; i <= 30; ++i) {
+    if ((1 << i) & b) {
+      ans = (ans * cnt) % p;
     }
-    cout << a << "^" << b << " mod " << p << "=" << ans << endl;
+    cnt = (cnt * cnt) % p;
+  }
+  cout << a << "^" << b << " mod " << p << "=" << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

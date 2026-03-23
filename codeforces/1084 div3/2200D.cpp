@@ -23,48 +23,48 @@ int t, n, x, y;
 int nums[200005];
 
 void solve() {
-    cin >> n >> x >> y;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
-    }
+  cin >> n >> x >> y;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+  }
 
-    vector<int> s, b;
-    for (int i = 1; i <= x; ++i) s.push_back(nums[i]);
-    for (int i = y + 1; i <= n; ++i) s.push_back(nums[i]);
+  vector<int> s, b;
+  for (int i = 1; i <= x; ++i) s.push_back(nums[i]);
+  for (int i = y + 1; i <= n; ++i) s.push_back(nums[i]);
 
-    int i = x + 1;
-    for (int j = x + 1; j <= y; ++j) {
-        if (nums[j] < nums[i]) i = j;
-    }
-    for (int j = i; j <= y; ++j) b.push_back(nums[j]);
-    for (int j = x + 1; j < i; ++j) b.push_back(nums[j]);
+  int i = x + 1;
+  for (int j = x + 1; j <= y; ++j) {
+    if (nums[j] < nums[i]) i = j;
+  }
+  for (int j = i; j <= y; ++j) b.push_back(nums[j]);
+  for (int j = x + 1; j < i; ++j) b.push_back(nums[j]);
 
-    if (s.empty()) {
-        for (int i = 0; i < sz(b); ++i) {
-            cout << b[i] << " \n"[i == sz(b) - 1];
-        }
-        return;
-    } else {
-        int i = sz(s);
-        for (int j = 0; j < sz(s); ++j) {
-            if (s[j] > b[0]) {
-                i = j;
-                break;
-            }
-        }
-        for (int j = 0; j < i; ++j) cout << s[j] << " ";
-        for (auto& x : b) cout << x << " ";
-        for (int j = i; j < sz(s); ++j) cout << s[j] << " ";
-        cout << endl;
+  if (s.empty()) {
+    for (int i = 0; i < sz(b); ++i) {
+      cout << b[i] << " \n"[i == sz(b) - 1];
     }
+    return;
+  } else {
+    int i = sz(s);
+    for (int j = 0; j < sz(s); ++j) {
+      if (s[j] > b[0]) {
+        i = j;
+        break;
+      }
+    }
+    for (int j = 0; j < i; ++j) cout << s[j] << " ";
+    for (auto& x : b) cout << x << " ";
+    for (int j = i; j < sz(s); ++j) cout << s[j] << " ";
+    cout << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

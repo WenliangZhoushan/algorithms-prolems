@@ -22,28 +22,28 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, n;
 
 void solve() {
-    unordered_map<int, int> cnt;
-    cin >> n;
-    int x;
-    for (int i = 0; i < n * n; ++i) {
-        cin >> x;
-        ++cnt[x];
-    }
-    int mx = x;
-    for (auto& [k, v] : cnt) mx = v > cnt[mx] ? k : mx;
-    if (cnt[mx] > n * n - n) {
-        cout << "NO" << endl;
-    } else {
-        cout << "YES" << endl;
-    }
+  unordered_map<int, int> cnt;
+  cin >> n;
+  int x;
+  for (int i = 0; i < n * n; ++i) {
+    cin >> x;
+    ++cnt[x];
+  }
+  int mx = x;
+  for (auto& [k, v] : cnt) mx = v > cnt[mx] ? k : mx;
+  if (cnt[mx] > n * n - n) {
+    cout << "NO" << endl;
+  } else {
+    cout << "YES" << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

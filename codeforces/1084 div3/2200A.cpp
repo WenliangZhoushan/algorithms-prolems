@@ -23,24 +23,24 @@ int t, n;
 int nums[15];
 
 void solve() {
-    cin >> n;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
-    }
-    int ans = 0;
-    int mx = *max_element(nums + 1, nums + n + 1);
-    for (int i = 1; i <= n; ++i) {
-        if (nums[i] == mx) ++ans;
-    }
-    cout << ans << endl;
+  cin >> n;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+  }
+  int ans = 0;
+  int mx = *max_element(nums + 1, nums + n + 1);
+  for (int i = 1; i <= n; ++i) {
+    if (nums[i] == mx) ++ans;
+  }
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

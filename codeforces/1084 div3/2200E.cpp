@@ -22,57 +22,57 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, n;
 
 int primebase(int x) {
-    set<int> cnt;
-    for (int i = 2; i * i <= x; ++i) {
-        if (x % i != 0) {
-            continue;
-        }
-        cnt.insert(i);
-        while (x % i == 0) {
-            x /= i;
-        }
+  set<int> cnt;
+  for (int i = 2; i * i <= x; ++i) {
+    if (x % i != 0) {
+      continue;
     }
-    if (x > 1) cnt.insert(x);
-    if (cnt.size() == 0) {
-        return 1;
-    } else if (cnt.size() > 1) {
-        return -1;
-    } else {
-        return *cnt.begin();
+    cnt.insert(i);
+    while (x % i == 0) {
+      x /= i;
     }
+  }
+  if (x > 1) cnt.insert(x);
+  if (cnt.size() == 0) {
+    return 1;
+  } else if (cnt.size() > 1) {
+    return -1;
+  } else {
+    return *cnt.begin();
+  }
 }
 
 void solve() {
-    cin >> n;
-    vector<int> nums(n);
-    for (int& x : nums) {
-        cin >> x;
-    }
+  cin >> n;
+  vector<int> nums(n);
+  for (int& x : nums) {
+    cin >> x;
+  }
 
-    if (is_sorted(all(nums))) {
-        cout << "Bob" << endl;
-        return;
-    }
-    vector<int> primes(n);
-    for (int i = 0; i < n; ++i) {
-        primes[i] = primebase(nums[i]);
-    }
+  if (is_sorted(all(nums))) {
+    cout << "Bob" << endl;
+    return;
+  }
+  vector<int> primes(n);
+  for (int i = 0; i < n; ++i) {
+    primes[i] = primebase(nums[i]);
+  }
 
-    if (*min_element(all(primes)) == -1) {
-        cout << "Alice" << endl;
-    } else if (is_sorted(all(primes))) {
-        cout << "Bob" << endl;
-    } else {
-        cout << "Alice" << endl;
-    }
+  if (*min_element(all(primes)) == -1) {
+    cout << "Alice" << endl;
+  } else if (is_sorted(all(primes))) {
+    cout << "Bob" << endl;
+  } else {
+    cout << "Alice" << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

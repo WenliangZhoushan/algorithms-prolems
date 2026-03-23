@@ -23,24 +23,24 @@ int n;
 pii nums[MAXN];
 
 void solve() {
-    cin >> n;
-    int t;
-    for (int i = 0; i < n; ++i) {
-        cin >> t;
-        nums[i] = make_pair(t, i);
-    }
-    sort(nums, nums + n, [](const auto& a, const auto& b){return a.fi == b.fi ? a.se < b.se : a.fi < b.fi;});
-    ll s = 0;
-    for (int i = 0; i < n; ++i) {
-        s += (n - i - 1) * nums[i].fi;
-        cout << nums[i].se + 1 << " \n"[i == n - 1];
-    }
-    cout << fixed << setprecision(2) << (double) s / n << endl;
+  cin >> n;
+  int t;
+  for (int i = 0; i < n; ++i) {
+    cin >> t;
+    nums[i] = make_pair(t, i);
+  }
+  sort(nums, nums + n, [](const auto& a, const auto& b){return a.fi == b.fi ? a.se < b.se : a.fi < b.fi;});
+  ll s = 0;
+  for (int i = 0; i < n; ++i) {
+    s += (n - i - 1) * nums[i].fi;
+    cout << nums[i].se + 1 << " \n"[i == n - 1];
+  }
+  cout << fixed << setprecision(2) << (double) s / n << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

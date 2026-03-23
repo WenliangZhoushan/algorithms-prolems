@@ -20,43 +20,43 @@ int t;
 ll s, m;
 
 int check(ll mid) {
-    ll rem = s;
-    for (int i = 62; i >= 0; --i) {
-        if ((m >> i) & 1) {
-            ll a = 1LL << i;
-            ll b = min(mid, rem / a);
-            rem -= a * b;
-        }
+  ll rem = s;
+  for (int i = 62; i >= 0; --i) {
+    if ((m >> i) & 1) {
+      ll a = 1LL << i;
+      ll b = min(mid, rem / a);
+      rem -= a * b;
     }
-    return rem == 0;
+  }
+  return rem == 0;
 }
 
 void solve() {
-    cin >> s >> m;
+  cin >> s >> m;
 
-    ll lowbit = m & (~m + 1);
-    if (s % lowbit != 0) {
-        cout << -1 << endl;
-        return;
+  ll lowbit = m & (~m + 1);
+  if (s % lowbit != 0) {
+    cout << -1 << endl;
+    return;
+  }
+  ll l = 1, r = s / lowbit;
+  while (l <= r) {
+    ll mid = l + (r - l) / 2;
+    if (!check(mid)) {
+      l = mid + 1;
+    } else {
+      r = mid - 1;
     }
-    ll l = 1, r = s / lowbit;
-    while (l <= r) {
-        ll mid = l + (r - l) / 2;
-        if (!check(mid)) {
-            l = mid + 1;
-        } else {
-            r = mid - 1;
-        }
-    }
-    cout << l << endl;
+  }
+  cout << l << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

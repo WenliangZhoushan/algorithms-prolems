@@ -24,22 +24,22 @@ int T, n;
 int nums[MAXN];
 
 void solve() {
-    cin >> n;
-    int ans = 0;
-    for (int i = 0; i < n; ++i) {
-        cin >> nums[i];
-        ans ^= nums[i];
-    }
-    cout << (ans != 0 ? "Yes" : "No") << endl;
+  cin >> n;
+  int ans = 0;
+  for (int i = 0; i < n; ++i) {
+    cin >> nums[i];
+    ans ^= nums[i];
+  }
+  cout << (ans != 0 ? "Yes" : "No") << endl;
 
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> T;
-    while (T--) {
-        solve();
-    }
+  cin >> T;
+  while (T--) {
+    solve();
+  }
 }

@@ -22,20 +22,20 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, x, y;
 
 void solve() {
-    cin >> x >> y;
-    if ((x + y) % 3 == 0 && -x / 4 <= y && y <= x / 2) {
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
+  cin >> x >> y;
+  if ((x + y) % 3 == 0 && -x / 4 <= y && y <= x / 2) {
+    cout << "YES" << endl;
+  } else {
+    cout << "NO" << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

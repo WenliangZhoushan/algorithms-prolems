@@ -22,29 +22,29 @@ const int NEG_INF = 0xcfcfcfcf;
 ll n, k;
 
 void solve() {
-    cin >> n >> k;
-    set<ll> cnt;
-    for (ll p = 1; p * p <= n; ++p) {
-        if (n % p == 0) {
-            cnt.insert(p);
-            cnt.insert(n / p);
-        }
+  cin >> n >> k;
+  set<ll> cnt;
+  for (ll p = 1; p * p <= n; ++p) {
+    if (n % p == 0) {
+      cnt.insert(p);
+      cnt.insert(n / p);
     }
-    // debug(cnt);
-    if (sz(cnt) < k) {
-        cout << -1 << endl;
-        return;
-    }
-    auto it = cnt.begin();
-    for (int i = 0; i < k - 1; ++i) {
-        ++it;
-    }
-    cout << *it << endl;
+  }
+  // debug(cnt);
+  if (sz(cnt) < k) {
+    cout << -1 << endl;
+    return;
+  }
+  auto it = cnt.begin();
+  for (int i = 0; i < k - 1; ++i) {
+    ++it;
+  }
+  cout << *it << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

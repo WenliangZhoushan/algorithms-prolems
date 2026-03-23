@@ -24,41 +24,41 @@ int n, m;
 int nums[MAXN][MAXN];
 
 void solve() {
-    cin >> n >> m;
+  cin >> n >> m;
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      cin >> nums[i][j];
+    }
+  }
+  int cnt = 0;
+  for (int i = 0; i < n; ++i) cnt ^= nums[i][0];
+  vector<int> ans(n, 1);
+  if (cnt == 0) {
     for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            cin >> nums[i][j];
-        }
-    }
-    int cnt = 0;
-    for (int i = 0; i < n; ++i) cnt ^= nums[i][0];
-    vector<int> ans(n, 1);
-    if (cnt == 0) {
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
-                if (nums[i][j] != nums[i][0]) {
-                    ans[i] = j + 1;
-                    cout << "TAK" << endl;
-                    for (int k = 0; k < n; ++k) {
-                        cout << ans[k] << " \n"[k == n - 1];
-                    }
-                    return;
-                }
-            }
-        }
-    } else {
-        cout << "TAK" << endl;
-        for (int k = 0; k < n; ++k) {
+      for (int j = 0; j < m; ++j) {
+        if (nums[i][j] != nums[i][0]) {
+          ans[i] = j + 1;
+          cout << "TAK" << endl;
+          for (int k = 0; k < n; ++k) {
             cout << ans[k] << " \n"[k == n - 1];
+          }
+          return;
         }
-        return;
+      }
     }
-    cout << "NIE" << endl;
+  } else {
+    cout << "TAK" << endl;
+    for (int k = 0; k < n; ++k) {
+      cout << ans[k] << " \n"[k == n - 1];
+    }
+    return;
+  }
+  cout << "NIE" << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

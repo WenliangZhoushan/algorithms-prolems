@@ -22,32 +22,32 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, n;
 
 void solve() {
-    cin >> n;
-    vector<int> nums(n);
-    for (int& x : nums) cin >> x;
+  cin >> n;
+  vector<int> nums(n);
+  for (int& x : nums) cin >> x;
 
-    int ans = 1, a = nums[0], b = nums[0];
-    for (int i = 1; i < n; ++i) {
-        if (nums[i] == b + 1) {
-            ++b;
-        } else if (a < nums[i] && nums[i] <= b) {
-            b = nums[i];
-        } else {
-            a = nums[i];
-            b = nums[i];
-            ++ans;
-        }
+  int ans = 1, a = nums[0], b = nums[0];
+  for (int i = 1; i < n; ++i) {
+    if (nums[i] == b + 1) {
+      ++b;
+    } else if (a < nums[i] && nums[i] <= b) {
+      b = nums[i];
+    } else {
+      a = nums[i];
+      b = nums[i];
+      ++ans;
     }
+  }
 
-    cout << ans << endl;
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

@@ -22,26 +22,26 @@ const int NEG_INF = 0xcfcfcfcf;
 int T, N;
 
 void solve() {
-    cin >> N;
-    int s = 0, c = 0, x;
-    for (int i = 0; i < N; ++i) {
-        cin >> x;
-        s ^= x;
-        c += x;
-    }
-    if (c == N) {
-        cout << (c % 2 == 0 ? "John" : "Brother") << endl;
-    } else {
-        cout << (s == 0 ? "Brother" : "John") << endl;
-    }
+  cin >> N;
+  int s = 0, c = 0, x;
+  for (int i = 0; i < N; ++i) {
+    cin >> x;
+    s ^= x;
+    c += x;
+  }
+  if (c == N) {
+    cout << (c % 2 == 0 ? "John" : "Brother") << endl;
+  } else {
+    cout << (s == 0 ? "Brother" : "John") << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> T;
-    while (T--) {
-        solve();
-    }
+  cin >> T;
+  while (T--) {
+    solve();
+  }
 }

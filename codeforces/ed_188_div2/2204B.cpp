@@ -22,27 +22,27 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, n;
 
 void solve() {
-    cin >> n;
-    vector<int> st;
-    vector<int> nums(n);
-    for (int& x : nums) {
-        cin >> x;
+  cin >> n;
+  vector<int> st;
+  vector<int> nums(n);
+  for (int& x : nums) {
+    cin >> x;
+  }
+  for (int x : nums) {
+    if (!st.empty() && x < st.back()) {
+      continue;
     }
-    for (int x : nums) {
-        if (!st.empty() && x < st.back()) {
-            continue;
-        }
-        st.push_back(x);
-    }
-    cout << st.size() << endl;
+    st.push_back(x);
+  }
+  cout << st.size() << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

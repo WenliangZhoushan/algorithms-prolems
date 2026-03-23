@@ -25,26 +25,26 @@ int n;
 int nums[MAXN];
 
 void solve(){
-    cin >> n;
-    int j = 0;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
-        if (nums[i] > nums[j]) j = i;
-    }
-    int a = nums[1], b = nums[j];
-    nums[1] = b;
-    nums[j] = a;
-    for (int i = 1; i <= n; ++i) {
-        cout << nums[i] << " \n"[i == n];
-    }
+  cin >> n;
+  int j = 0;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+    if (nums[i] > nums[j]) j = i;
+  }
+  int a = nums[1], b = nums[j];
+  nums[1] = b;
+  nums[j] = a;
+  for (int i = 1; i <= n; ++i) {
+    cout << nums[i] << " \n"[i == n];
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }
