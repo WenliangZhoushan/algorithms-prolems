@@ -6,12 +6,12 @@ using namespace std;
 int n, k;
 
 void solve() {
-    cin >> n >> k;
+  cin >> n >> k;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-    solve();
+  solve();
 }

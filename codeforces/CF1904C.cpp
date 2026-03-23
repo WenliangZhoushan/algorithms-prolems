@@ -23,39 +23,39 @@ int t, n, k;
 ll nums[2010];
 
 void solve() {
-    cin >> n >> k;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
-    }
-    if (k >= 3) {
-        cout << 0 << endl;
-        return;
-    }
-    sort(nums + 1, nums + n + 1);
-    ll mn = nums[1];
-    for (int i = 1; i < n; ++i) {
-        mn = min(mn, nums[i + 1] - nums[i]);
-    }
-    if (k == 1) {
-        cout << mn << endl;
-        return;
-    }
-    for (int i = 1; i <= n; ++i) {
-        for (int j = i + 1; j <= n; ++j) {
-            ll diff = nums[j] - nums[i];
-            auto it = lower_bound(nums + 1, nums + n + 1, diff);
-            mn = min({mn, diff - *(it - 1), *it - diff});
-        }
-    }
+  cin >> n >> k;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+  }
+  if (k >= 3) {
+    cout << 0 << endl;
+    return;
+  }
+  sort(nums + 1, nums + n + 1);
+  ll mn = nums[1];
+  for (int i = 1; i < n; ++i) {
+    mn = min(mn, nums[i + 1] - nums[i]);
+  }
+  if (k == 1) {
     cout << mn << endl;
+    return;
+  }
+  for (int i = 1; i <= n; ++i) {
+    for (int j = i + 1; j <= n; ++j) {
+      ll diff = nums[j] - nums[i];
+      auto it = lower_bound(nums + 1, nums + n + 1, diff);
+      mn = min({mn, diff - *(it - 1), *it - diff});
+    }
+  }
+  cout << mn << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

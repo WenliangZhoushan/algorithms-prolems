@@ -23,46 +23,46 @@ int t, n;
 string X;
 
 int check(string s) {
-    int m = s.size();
-    vector<int> cnt(2);
-    for (int i = 0; i < m; i += 2) {
-        if (s.substr(i, 2) == "aa" || s.substr(i, 2) == "bb") {
-            return 0;
-        }
-        for (char& c : s.substr(i, 2)) {
-            if (c == '?') continue;
-            ++cnt[c - 'a'];
-        }
+  int m = s.size();
+  vector<int> cnt(2);
+  for (int i = 0; i < m; i += 2) {
+    if (s.substr(i, 2) == "aa" || s.substr(i, 2) == "bb") {
+      return 0;
     }
-    for (int& c : cnt) {
-        if (c > m / 2) {
-            return 0;
-        }
+    for (char& c : s.substr(i, 2)) {
+      if (c == '?') continue;
+      ++cnt[c - 'a'];
     }
-    return 1;
+  }
+  for (int& c : cnt) {
+    if (c > m / 2) {
+      return 0;
+    }
+  }
+  return 1;
 }
 
 void solve() {
-    cin >> n;
-    cin >> X;
-    if (n % 2 == 0) {
-        cout << (check(X) ? "YES" : "NO") << endl;
+  cin >> n;
+  cin >> X;
+  if (n % 2 == 0) {
+    cout << (check(X) ? "YES" : "NO") << endl;
+  } else {
+    bool ok = (X[0] == 'a' || X[0] == '?');
+    if (ok && check(X.substr(1, n - 1))) {
+      cout << "YES" << endl;
     } else {
-        bool ok = (X[0] == 'a' || X[0] == '?');
-        if (ok && check(X.substr(1, n - 1))) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
+      cout << "NO" << endl;
     }
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

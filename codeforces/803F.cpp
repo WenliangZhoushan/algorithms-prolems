@@ -25,35 +25,35 @@ int mod = 1'000'000'007;
 int pow2[MAXN];
 
 void solve() {
-    cin >> n;
-    vector<int> cnt(MAXN);
-    int x;
-    for (int i = 0; i < n; ++i) {
-        cin >> x;
-        ++cnt[x];
-    }
-    vector<int> f(MAXN);
+  cin >> n;
+  vector<int> cnt(MAXN);
+  int x;
+  for (int i = 0; i < n; ++i) {
+    cin >> x;
+    ++cnt[x];
+  }
+  vector<int> f(MAXN);
 
-    for (int i = 100000; i >= 1; --i) {
-        int s = 0;
-        for (int j = i; j < MAXN; j += i) s += cnt[j];
-        f[i] = (pow2[s] - 1 + mod) % mod;
-        for (int j = 2 * i; j < MAXN; j += i) {
-            f[i] = (f[i] - f[j] + mod) % mod;
-        }
+  for (int i = 100000; i >= 1; --i) {
+    int s = 0;
+    for (int j = i; j < MAXN; j += i) s += cnt[j];
+    f[i] = (pow2[s] - 1 + mod) % mod;
+    for (int j = 2 * i; j < MAXN; j += i) {
+      f[i] = (f[i] - f[j] + mod) % mod;
     }
+  }
 
-    cout << f[1] << endl;
+  cout << f[1] << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    pow2[0] = 1;
-    for (int i = 1; i <= MAXN; ++i) {
-        pow2[i] = (pow2[i - 1] * 2) % mod;
-    }
+  pow2[0] = 1;
+  for (int i = 1; i <= MAXN; ++i) {
+    pow2[i] = (pow2[i - 1] * 2) % mod;
+  }
 
-    solve();
+  solve();
 }

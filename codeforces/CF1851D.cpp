@@ -25,66 +25,66 @@ ll nums[MAXN];
 int cnt[MAXN];
 
 void solve() {
-    fill(cnt, cnt + MAXN, 0);
+  fill(cnt, cnt + MAXN, 0);
 
-    cin >> n;
-    for (int i = 1; i <= n - 1; ++i) {
-        cin >> nums[i];
+  cin >> n;
+  for (int i = 1; i <= n - 1; ++i) {
+    cin >> nums[i];
+  }
+  int x = -1;
+  for (int i = 1; i <= n - 1; ++i) {
+    ll a = nums[i] - nums[i - 1];
+    if (a > n + n - 1) {
+      cout << "NO" << endl;
+      return;
     }
-    int x = -1;
-    for (int i = 1; i <= n - 1; ++i) {
-        ll a = nums[i] - nums[i - 1];
-        if (a > n + n - 1) {
-            cout << "NO" << endl;
-            return;
-        }
-        if (a > n || cnt[a] == 1) {
-            if (x != -1) {
-                // debug_arr(nums + 1, n - 1);
-                // debug2(i, x);
-                // debug_arr(cnt + 1, n);
-                cout << "NO" << endl;
-                return;
-            } else {
-                x = a;
-            }
-        } else {
-            cnt[a] = 1;
-        }
-    }
-    if (x == -1) {
-        cout << "YES" << endl;
-        return;
-    }
-    int a, b;
-    for (int i = 1; i <= n; ++i) {
-        if (!cnt[i]) {
-            a = i;
-            break;
-        }
-    }
-    for (int j = n; j > a; --j) {
-        if (!cnt[j]) {
-            b = j;
-            break;
-        }
-    }
-    if (a + b == x) {
-        cout << "YES" << endl;
-    } else {
-        // debug3(x, a, b);
+    if (a > n || cnt[a] == 1) {
+      if (x != -1) {
+        // debug_arr(nums + 1, n - 1);
+        // debug2(i, x);
         // debug_arr(cnt + 1, n);
         cout << "NO" << endl;
+        return;
+      } else {
+        x = a;
+      }
+    } else {
+      cnt[a] = 1;
     }
+  }
+  if (x == -1) {
+    cout << "YES" << endl;
+    return;
+  }
+  int a, b;
+  for (int i = 1; i <= n; ++i) {
+    if (!cnt[i]) {
+      a = i;
+      break;
+    }
+  }
+  for (int j = n; j > a; --j) {
+    if (!cnt[j]) {
+      b = j;
+      break;
+    }
+  }
+  if (a + b == x) {
+    cout << "YES" << endl;
+  } else {
+    // debug3(x, a, b);
+    // debug_arr(cnt + 1, n);
+    cout << "NO" << endl;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-        // line();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+    // line();
+  }
 }

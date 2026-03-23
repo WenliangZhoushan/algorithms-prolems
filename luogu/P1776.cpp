@@ -7,35 +7,35 @@ int values[110], costs[110], nums[110];
 int f[2][40010];
 
 int f1(int i, int j) {
-    return j / costs[i] * values[i];
+  return j / costs[i] * values[i];
 }
 
 int main() {
-    cin >> n >> W;
-    int v, w, m;
-    for (int i = 0; i < n; ++i) {
-        cin >> v >> w >> m;
-        values[i] = v; costs[i] = w; nums[i] = m;
-    }
-    deque<int> dq;
+  cin >> n >> W;
+  int v, w, m;
+  for (int i = 0; i < n; ++i) {
+    cin >> v >> w >> m;
+    values[i] = v; costs[i] = w; nums[i] = m;
+  }
+  deque<int> dq;
 
-    for (int i = 0; i < n; ++i) {
-        for (int mod = 0; mod < min(costs[i], W + 1); ++mod) {
-            dq.clear();
-            for (int j = mod; j < W + 1; j += costs[i]) {
-                while (!dq.empty() && j - dq.front() > costs[i] * nums[i]) {
-                    dq.pop_front();
-                }
-                while (!dq.empty() && f[i % 2][j] - f1(i, j) >= f[i % 2][dq.back()] - f1(i, dq.back())) {
-                    dq.pop_back();
-                }
-                dq.push_back(j);
-                f[(i + 1) % 2][j] = f1(i, j) + f[i % 2][dq.front()] - f1(i, dq.front());
-            }
+  for (int i = 0; i < n; ++i) {
+    for (int mod = 0; mod < min(costs[i], W + 1); ++mod) {
+      dq.clear();
+      for (int j = mod; j < W + 1; j += costs[i]) {
+        while (!dq.empty() && j - dq.front() > costs[i] * nums[i]) {
+          dq.pop_front();
         }
+        while (!dq.empty() && f[i % 2][j] - f1(i, j) >= f[i % 2][dq.back()] - f1(i, dq.back())) {
+          dq.pop_back();
+        }
+        dq.push_back(j);
+        f[(i + 1) % 2][j] = f1(i, j) + f[i % 2][dq.front()] - f1(i, dq.front());
+      }
     }
+  }
 
-    cout << f[n % 2][W] << endl;
+  cout << f[n % 2][W] << endl;
 }
 
 // 二进制优化枚举 + 暴力组内枚举

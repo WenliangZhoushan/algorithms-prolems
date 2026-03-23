@@ -25,26 +25,26 @@ int n;
 int nums[MAXN];
 
 void solve() {
-    cin >> n;
-    for (int i = 0; i < n; ++i) {
-        cin >> nums[i];
-    }
-    ll ans = 0;
-    vector<int> cnt(32);
-    for (int i = n - 1; i >= 0; --i) {
-        int x = nums[i];
-        int msb = 31 - __builtin_clz(x);
-        ans += cnt[msb]++;
-    }
-    cout << ans << endl;
+  cin >> n;
+  for (int i = 0; i < n; ++i) {
+    cin >> nums[i];
+  }
+  ll ans = 0;
+  vector<int> cnt(32);
+  for (int i = n - 1; i >= 0; --i) {
+    int x = nums[i];
+    int msb = 31 - __builtin_clz(x);
+    ans += cnt[msb]++;
+  }
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

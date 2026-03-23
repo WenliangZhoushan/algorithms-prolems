@@ -23,21 +23,21 @@ int t, n;
 int nums[15];
 
 void solve() {
-    cin >> n;
-    int flag = true;
-    for (int i = 1; i <= n; ++i) {
-        cin >> nums[i];
-        if (nums[i] < nums[i - 1]) flag = false;
-    }
-    cout << (flag ? n : 1) << endl;
+  cin >> n;
+  int flag = true;
+  for (int i = 1; i <= n; ++i) {
+    cin >> nums[i];
+    if (nums[i] < nums[i - 1]) flag = false;
+  }
+  cout << (flag ? n : 1) << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

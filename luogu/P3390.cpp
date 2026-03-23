@@ -26,46 +26,46 @@ ll k;
 vector<vector<ll>> nums(MAXN, vector<ll>(MAXN));
 
 vector<vector<ll>> multiply(const vector<vector<ll>>& A, const vector<vector<ll>>& B, int n) {
-    vector<vector<ll>> C(n + 1, vector<ll>(n + 1, 0));
-    // 这里 i -> k -> j 的遍历顺序涉及cpu和内存优化
-    for (int i = 1; i <= n; ++i) {
-        for (int k = 1; k <= n; ++k) {
-            if (A[i][k] == 0) continue; 
-            for (int j = 1; j <= n; ++j) {
-                C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD;
-            }
-        }
+  vector<vector<ll>> C(n + 1, vector<ll>(n + 1, 0));
+  // 这里 i -> k -> j 的遍历顺序涉及cpu和内存优化
+  for (int i = 1; i <= n; ++i) {
+    for (int k = 1; k <= n; ++k) {
+      if (A[i][k] == 0) continue; 
+      for (int j = 1; j <= n; ++j) {
+        C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % MOD;
+      }
     }
-    return C;
+  }
+  return C;
 }
 
 void solve() {
-    cin >> n >> k;
-    vector<vector<ll>> ans(n + 1, vector<ll>(n + 1, 0));
-    for (int i = 1; i <= n; ++i) {
-        ans[i][i] = 1;
-        for (int j = 1; j <= n; ++j) {
-            cin >> nums[i][j];
-        }
+  cin >> n >> k;
+  vector<vector<ll>> ans(n + 1, vector<ll>(n + 1, 0));
+  for (int i = 1; i <= n; ++i) {
+    ans[i][i] = 1;
+    for (int j = 1; j <= n; ++j) {
+      cin >> nums[i][j];
     }
+  }
 
-    while (k > 0) {
-        if (k & 1) ans = multiply(ans, nums, n);
-        nums = multiply(nums, nums, n);
-        k >>= 1;
-    }
+  while (k > 0) {
+    if (k & 1) ans = multiply(ans, nums, n);
+    nums = multiply(nums, nums, n);
+    k >>= 1;
+  }
 
-    for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            cout << ans[i][j] << " ";
-        }
-        cout << endl;;
+  for (int i = 1; i <= n; ++i) {
+    for (int j = 1; j <= n; ++j) {
+      cout << ans[i][j] << " ";
     }
+    cout << endl;;
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
-    solve();
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  
+  solve();
 }

@@ -14,40 +14,40 @@ int dfn_size[310];
 
 // 反向建立dfn序，dfn序->节点值
 int build_dfn(int u) {
-    dfn[cnt] = u;
-    dfn_size[cnt] = 1;
-    int i = cnt++;
-    for (auto& v : g[u]) {
-        dfn_size[i] += build_dfn(v);
-    }
-    return dfn_size[i];
+  dfn[cnt] = u;
+  dfn_size[cnt] = 1;
+  int i = cnt++;
+  for (auto& v : g[u]) {
+    dfn_size[i] += build_dfn(v);
+  }
+  return dfn_size[i];
 }
 
 int main() {
-    // N个节点，M的背包容量
-    cin >> N >> M;
-    int k, s;
-    for (int i = 1; i < N + 1; ++i) {
-        cin >> k >> s;
-        g[k].push_back(i);
-        scores[i] = s;
+  // N个节点，M的背包容量
+  cin >> N >> M;
+  int k, s;
+  for (int i = 1; i < N + 1; ++i) {
+    cin >> k >> s;
+    g[k].push_back(i);
+    scores[i] = s;
+  }
+
+  build_dfn(0); // 0为虚拟头节点
+
+  // f[i][k]定义：选dfn序[i ... N + 1]区间的节点，选恰好k个的最大收益。固定到N + 1
+  // 倒序遍历dfn，正序遍历空间
+  for (int i = N + 1; i > 0; --i) {
+    // 如果不选，则底下子树都不能选，j右侧第一颗合法子树父节点的dfn
+    int j = i + dfn_size[i];
+    for (int k = 1; k < M + 1; ++k) {
+      int ans1 = f[j][k];
+      int ans2 = f[i + 1][k - 1] + scores[dfn[i]];
+      f[i][k] = max(ans1, ans2);
     }
+  }
 
-    build_dfn(0); // 0为虚拟头节点
-
-    // f[i][k]定义：选dfn序[i ... N + 1]区间的节点，选恰好k个的最大收益。固定到N + 1
-    // 倒序遍历dfn，正序遍历空间
-    for (int i = N + 1; i > 0; --i) {
-        // 如果不选，则底下子树都不能选，j右侧第一颗合法子树父节点的dfn
-        int j = i + dfn_size[i];
-        for (int k = 1; k < M + 1; ++k) {
-            int ans1 = f[j][k];
-            int ans2 = f[i + 1][k - 1] + scores[dfn[i]];
-            f[i][k] = max(ans1, ans2);
-        }
-    }
-
-    cout << f[1][M] << endl;
+  cout << f[1][M] << endl;
 }
 
 // ------------- 树上背包 分组背包模板 O(N ^ 2 * K) ------------- //

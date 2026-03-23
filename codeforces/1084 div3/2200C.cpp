@@ -23,24 +23,24 @@ int t, n;
 string s;
 
 void solve() {
-    cin >> n >> s;
-    vector<int> st;
-    for (int i = 0; i < n; ++i) {
-        if (!st.empty() && s[i] == s[st.back()]) {
-            st.pop_back();
-            continue;
-        }
-        st.push_back(i);
+  cin >> n >> s;
+  vector<int> st;
+  for (int i = 0; i < n; ++i) {
+    if (!st.empty() && s[i] == s[st.back()]) {
+      st.pop_back();
+      continue;
     }
-    cout << (st.empty() ? "YES" : "NO") << endl;
+    st.push_back(i);
+  }
+  cout << (st.empty() ? "YES" : "NO") << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

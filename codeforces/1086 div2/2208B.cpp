@@ -22,35 +22,35 @@ const int NEG_INF = 0xcfcfcfcf;
 int t, n, k, p, m;
 
 void solve() {
-    cin >> n >> k >> p >> m;
-    vector<int> nums(n);
-    for (int& x : nums) cin >> x;
-    ll cost1 = nums[p - 1], c = max(0, p - k);
-    priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.begin() + p - 1);
-    while (c--) {
-        cost1 += pq.top();
-        pq.pop();
-    }
-    if (cost1 > m) {
-        cout << 0 << endl;
-        return;
-    }
-    vector<int> nums2;
-    for (int i = 0; i < n; ++i) {
-        if (i == p - 1) continue;
-        nums2.push_back(nums[i]);
-    }
-    sort(all(nums2));
-    ll cost2 = reduce(nums2.begin(), nums2.begin() + n - k, 0LL) + nums[p - 1];
-    cout << 1 + (m - cost1) / cost2 << endl;
+  cin >> n >> k >> p >> m;
+  vector<int> nums(n);
+  for (int& x : nums) cin >> x;
+  ll cost1 = nums[p - 1], c = max(0, p - k);
+  priority_queue<int, vector<int>, greater<int>> pq(nums.begin(), nums.begin() + p - 1);
+  while (c--) {
+    cost1 += pq.top();
+    pq.pop();
+  }
+  if (cost1 > m) {
+    cout << 0 << endl;
+    return;
+  }
+  vector<int> nums2;
+  for (int i = 0; i < n; ++i) {
+    if (i == p - 1) continue;
+    nums2.push_back(nums[i]);
+  }
+  sort(all(nums2));
+  ll cost2 = reduce(nums2.begin(), nums2.begin() + n - k, 0LL) + nums[p - 1];
+  cout << 1 + (m - cost1) / cost2 << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

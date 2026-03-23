@@ -20,31 +20,31 @@ int n;
 priority_queue<int, vector<int>, greater<int>> mn;
 
 void solve() {
-    cin >> n;
-    int x;
-    for (int i = 0; i < n; ++i) {
-        cin >> x;
-        mn.push(x);
+  cin >> n;
+  int x;
+  for (int i = 0; i < n; ++i) {
+    cin >> x;
+    mn.push(x);
+  }
+  int ans = 0;
+  while (1) {
+    int a = mn.top();
+    mn.pop();
+    int b = mn.top();
+    mn.pop();
+    ans += a + b;
+    if (mn.empty()) {
+      cout << ans << endl;
+      return;
+    } else {
+      mn.push(a + b);
     }
-    int ans = 0;
-    while (1) {
-        int a = mn.top();
-        mn.pop();
-        int b = mn.top();
-        mn.pop();
-        ans += a + b;
-        if (mn.empty()) {
-            cout << ans << endl;
-            return;
-        } else {
-            mn.push(a + b);
-        }
-    }
+  }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    solve();
+  solve();
 }

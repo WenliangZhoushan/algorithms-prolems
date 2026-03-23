@@ -22,29 +22,29 @@ const int NEG_INF = 0xcfcfcfcf;
 ll t, a, b, c, m;
 
 void solve() {
-    cin >> a >> b >> c >> m;
-    ll ab = lcm(a, b);
-    ll ac = lcm(a, c);
-    ll bc = lcm(b, c);
-    ll abc = lcm(a, bc);
-    ll A = m / a - m / ab - m / ac + m / abc;
-    ll B = m / b - m / ab - m / bc + m / abc;
-    ll C = m / c - m / bc - m / ac + m / abc;
-    ll AB = m / ab - m / abc;
-    ll AC = m / ac - m / abc;
-    ll BC = m / bc - m / abc;
-    ll ABC = m / abc;
-    cout << 6 * A + 3 * AB + 3 * AC + 2 * ABC << ' ';
-    cout << 6 * B + 3 * AB + 3 * BC + 2 * ABC << ' ';
-    cout << 6 * C + 3 * AC + 3 * BC + 2 * ABC << endl;
+  cin >> a >> b >> c >> m;
+  ll ab = lcm(a, b);
+  ll ac = lcm(a, c);
+  ll bc = lcm(b, c);
+  ll abc = lcm(a, bc);
+  ll A = m / a - m / ab - m / ac + m / abc;
+  ll B = m / b - m / ab - m / bc + m / abc;
+  ll C = m / c - m / bc - m / ac + m / abc;
+  ll AB = m / ab - m / abc;
+  ll AC = m / ac - m / abc;
+  ll BC = m / bc - m / abc;
+  ll ABC = m / abc;
+  cout << 6 * A + 3 * AB + 3 * AC + 2 * ABC << ' ';
+  cout << 6 * B + 3 * AB + 3 * BC + 2 * ABC << ' ';
+  cout << 6 * C + 3 * AC + 3 * BC + 2 * ABC << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

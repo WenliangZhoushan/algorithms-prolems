@@ -26,33 +26,33 @@ int nums[MAXN];
 int cnt[32];
 
 void solve() {
-    memset(cnt, 0, sizeof(cnt));
+  memset(cnt, 0, sizeof(cnt));
 
-    cin >> n >> k;
-    for (int i = 0; i < n; ++i) {
-        cin >> nums[i];
-        for (int j = 30; j >= 0; --j) {
-            if ((nums[i] >> j) & 1) {
-                ++cnt[j];
-            }
-        }
+  cin >> n >> k;
+  for (int i = 0; i < n; ++i) {
+    cin >> nums[i];
+    for (int j = 30; j >= 0; --j) {
+      if ((nums[i] >> j) & 1) {
+        ++cnt[j];
+      }
     }
-    int ans = 0;
-    for (int i = 30; i >= 0; --i) {
-        if (n - cnt[i] <= k) {
-            k -= n - cnt[i];
-            ans |= 1 << i;
-        }
+  }
+  int ans = 0;
+  for (int i = 30; i >= 0; --i) {
+    if (n - cnt[i] <= k) {
+      k -= n - cnt[i];
+      ans |= 1 << i;
     }
-    cout << ans << endl;
+  }
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }

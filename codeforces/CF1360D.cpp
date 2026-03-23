@@ -23,26 +23,26 @@ int t;
 int n, k;
 
 void solve() {
-    cin >> n >> k;
-    int ans = n;
-    for (int i = 1; i * i <= n; ++i) {
-        if (i > k) break;
-        if (n % i == 0) {
-            ans = min(ans, n / i);
-            if (n / i <= k) {
-                ans = min(ans, i);
-            }
-        }
+  cin >> n >> k;
+  int ans = n;
+  for (int i = 1; i * i <= n; ++i) {
+    if (i > k) break;
+    if (n % i == 0) {
+      ans = min(ans, n / i);
+      if (n / i <= k) {
+        ans = min(ans, i);
+      }
     }
-    cout << ans << endl;
+  }
+  cout << ans << endl;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
-    cin >> t;
-    while (t--) {
-        solve();
-    }
+  cin >> t;
+  while (t--) {
+    solve();
+  }
 }
