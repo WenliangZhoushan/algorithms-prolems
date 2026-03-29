@@ -33,7 +33,7 @@ void solve() {
     while (!mn_st.empty() && nums[r] <= nums[mn_st.back()]) {
       mn_st.pop_back();
     }
-    while (!mx_st.empty() && nums[r] >= nums[mx_st.back()]) {
+    while (!mx_st.empty() && nums[r] > nums[mx_st.back()]) {
       mx_st.pop_back();
     }
     if (!mn_st.empty()) {
