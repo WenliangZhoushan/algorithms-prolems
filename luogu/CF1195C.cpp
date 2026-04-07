@@ -23,7 +23,6 @@ const int NEG_INF = 0xcfcfcfcf;
 const int maxn = 1e5 + 5;
 int n;
 int h1[maxn], h2[maxn];
-ll f[maxn][2];
 
 void solve() {
   cin >> n;
@@ -35,11 +34,10 @@ void solve() {
   }
 
   ll cnt1 = 0, cnt2 = 0;
+  ll a = 0, b = 0;
   for (int i = 1; i <= n; ++i) {
-    f[i][0] = cnt2 + h1[i];
-    f[i][1] = cnt1 + h2[i];
-    cnt1 = max(cnt1, f[i][0]);
-    cnt2 = max(cnt2, f[i][1]);
+    a = cnt2 + h1[i], b = cnt1 + h2[i];
+    cnt1 = max(cnt1, a), cnt2 = max(cnt2, b);
   }
 
   cout << max(cnt1, cnt2) << endl;
